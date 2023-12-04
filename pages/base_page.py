@@ -30,7 +30,7 @@ class BasePage:
         return wait(self.driver, timeout).until(EC.element_to_be_clickable(locator))
 
     def go_to_element(self, element):
-        self.driver.execute_script('argument[0].scrollIntoView(True);', element)
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
     # def find_invisible_element(self, locator):
     #     self.driver.find_element(By.CSS_SELECTOR, locator)
