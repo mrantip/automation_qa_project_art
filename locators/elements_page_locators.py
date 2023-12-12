@@ -52,3 +52,4 @@ class WebTablePageLocators:
     COUNT_ROW_LIST = (By.CSS_SELECTOR, 'select[aria-label="rows per page"]')
 
     # update
+    UPDATE_BUTTON = (By.CSS_SELECTOR, 'span[title="Edit"]')
