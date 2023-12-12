@@ -103,11 +103,19 @@ class WebTablePage(BasePage):
             self.element_is_visible(self.locators.DEPARTMENT_INPUT).send_keys(department)
             self.element_is_visible(self.locators.SUBMIT).click()
             count -= 1
-            return [firstname, lastname, str(age), email, str(salary),  department]
+            return [firstname, lastname, str(age), email, str(salary), department]
 
     def check_new_added_person(self):
         people_list = self.elements_are_present(self.locators.FULL_PEOPLE_LIST)
         data = []
         for item in people_list:
             data.append(item.text.splitlines())
-        return  data
+        return data
+
+    def search_some_person(self, key_word):
+        self.element_is_visible(self.locators.SEARCH_INPUT).send_keys(key_word)
+
+    def check_search_person(selfs):
+        delete_button = selfs.element_is_present(selfs.locators.DELETE_BUTTON)
+        row = delete_button.find_element(By.XPATH, selfs.locators.ROW_PARENT)
+        return row.text.splitlines()
