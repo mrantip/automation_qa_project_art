@@ -123,8 +123,32 @@ class TestElements:
             href_link, current_url = links_page.check_new_tab_simple_link()
             assert href_link == current_url, 'The link is broken or url is incorrect'
 
+        def test_check_dynamic_link(self, driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            href_link, current_url = links_page.check_new_tab_dynamic_link()
+            assert href_link == current_url, 'The link is broken or url is incorrect'
+
         def test_broken_link(self, driver):
             links_page = LinksPage(driver, 'https://demoqa.com/links')
             links_page.open()
             response_code = links_page.check_broken_link('https://demoqa.com/bad-request')
             assert response_code == 400, 'The link works or the status code is not 400'
+
+        def test_all_api_link(self, driver):
+            links_page = LinksPage(driver, 'https://demoqa.com/links')
+            links_page.open()
+            response_code_created = links_page.check_created_link('https://demoqa.com/created')
+            response_code_no_content = links_page.check_no_content_link('https://demoqa.com/no-content')
+            response_code_moved = links_page.check_moved_link('https://demoqa.com/moved')
+            response_code_bad_request = links_page.check_broken_link('https://demoqa.com/bad-request')
+            response_code_unauthorized = links_page.check_unauthorized_link('https://demoqa.com/unauthorized')
+            response_code_forbidden = links_page.check_forbidden_link('https://demoqa.com/forbidden')
+            response_code_not_found = links_page.check_not_found_link('https://demoqa.com/invalid-url')
+            assert response_code_created == 201, 'The link works or the status code is not 201'
+            assert response_code_no_content == 204, 'The link works or the status code is not 204'
+            assert response_code_moved == 301, 'The link works or the status code is not 301'
+            assert response_code_bad_request == 400, 'The link works or the status code is not 400'
+            assert response_code_unauthorized == 401, 'The link works or the status code is not 401'
+            assert response_code_forbidden == 403, 'The link works or the status code is not 403'
+            assert response_code_not_found == 404, 'The link works or the status code is not 404'

@@ -195,9 +195,63 @@ class LinksPage(BasePage):
         else:
             return link_href, request.status_code
 
+    def check_new_tab_dynamic_link(self):
+        dynamic_link = self.element_is_visible(self.locators.DYNAMIC_LINK)
+        link_href = dynamic_link.get_attribute('href')
+        request = requests.get(link_href)
+        if request.status_code == 200:
+            dynamic_link.click()
+            self.driver.switch_to.window(self.driver.window_handles[1])
+            url = self.driver.current_url
+            return link_href, url
+        else:
+            return link_href, request.status_code
+
     def check_broken_link(self, url):
         request = requests.get(url)
         if request.status_code == 200:
             self.element_is_present(self.locators.BAD_REQUEST).click()
+        else:
+            return request.status_code
+
+    def check_created_link(self, url):
+        request = requests.get(url)
+        if request.status_code == 200:
+            self.element_is_present(self.locators.CREATED).click()
+        else:
+            return request.status_code
+
+    def check_no_content_link(self, url):
+        request = requests.get(url)
+        if request.status_code == 200:
+            self.element_is_present(self.locators.NO_CONTENT).click()
+        else:
+            return request.status_code
+
+    def check_moved_link(self, url):
+        request = requests.get(url)
+        if request.status_code == 200:
+            self.element_is_present(self.locators.MOVED).click()
+        else:
+            return request.status_code
+
+    def check_unauthorized_link(self, url):
+        request = requests.get(url)
+        if request.status_code == 200:
+            self.element_is_present(self.locators.UNAUTHORISED).click()
+        else:
+            return request.status_code
+
+    def check_forbidden_link(self, url):
+        request = requests.get(url)
+        if request.status_code == 200:
+            self.element_is_present(self.locators.FORBIDDEN).click()
+        else:
+            return request.status_code
+
+    def check_not_found_link(self, url):
+        request = requests.get(url)
+        if request.status_code == 200:
+            self.element_is_present(self.locators.NOT_FOUND).click()
         else:
             return request.status_code

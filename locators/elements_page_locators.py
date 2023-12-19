@@ -68,4 +68,14 @@ class ButtonsPageLocators:
 
 class LinksPageLocators:
     SIMPLE_LINK = (By.CSS_SELECTOR, 'a[id="simpleLink"]')
+    DYNAMIC_LINK = (By.CSS_SELECTOR, 'a[id="dynamicLink"]')
+
+
+    # send an api call
+    CREATED = (By.CSS_SELECTOR, 'a[id="bad-request"]')
+    NO_CONTENT = (By.CSS_SELECTOR, 'a[id="bad-request"]')
+    MOVED = (By.CSS_SELECTOR, 'a[id="bad-request"]')
     BAD_REQUEST = (By.CSS_SELECTOR, 'a[id="bad-request"]')
+    UNAUTHORISED = (By.CSS_SELECTOR, 'a[id="bad-request"]')
+    FORBIDDEN = (By.CSS_SELECTOR, 'a[id="bad-request"]')
+    NOT_FOUND = (By.CSS_SELECTOR, 'a[id="bad-request"]')
