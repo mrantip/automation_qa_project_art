@@ -2,7 +2,8 @@ import random
 import time
 
 from pages.base_page import BasePage
-from pages.element_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage
+from pages.element_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage, \
+    UploadAndDownloadPage
 
 
 class TestElements:
@@ -152,3 +153,17 @@ class TestElements:
             assert response_code_unauthorized == 401, 'The link works or the status code is not 401'
             assert response_code_forbidden == 403, 'The link works or the status code is not 403'
             assert response_code_not_found == 404, 'The link works or the status code is not 404'
+
+    class TestUploadAndDownload:
+
+        def test_upload_file(self, driver):
+            upload_download_page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
+            upload_download_page.open()
+            file_name, result = upload_download_page.upload_file()
+            assert file_name == result, 'The file has not been uploaded'
+
+        def test_download_file(self, driver):
+            upload_download_page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
+            upload_download_page.open()
+            check = upload_download_page.download_file()
+            assert check is True, 'The file has not been downloaded'

@@ -70,7 +70,6 @@ class LinksPageLocators:
     SIMPLE_LINK = (By.CSS_SELECTOR, 'a[id="simpleLink"]')
     DYNAMIC_LINK = (By.CSS_SELECTOR, 'a[id="dynamicLink"]')
 
-
     # send an api call
     CREATED = (By.CSS_SELECTOR, 'a[id="bad-request"]')
     NO_CONTENT = (By.CSS_SELECTOR, 'a[id="bad-request"]')
@@ -79,3 +78,10 @@ class LinksPageLocators:
     UNAUTHORISED = (By.CSS_SELECTOR, 'a[id="bad-request"]')
     FORBIDDEN = (By.CSS_SELECTOR, 'a[id="bad-request"]')
     NOT_FOUND = (By.CSS_SELECTOR, 'a[id="bad-request"]')
+
+
+class UploadAndDownloadPageLocators:
+    UPLOAD_FILE = (By.CSS_SELECTOR, 'input[id="uploadFile"]')
+    UPLOADED_RESULT = (By.CSS_SELECTOR, 'p[id="uploadedFilePath"]')
+
+    DOWNLOAD_FILE = (By.CSS_SELECTOR, 'a[id="downloadButton"]')
