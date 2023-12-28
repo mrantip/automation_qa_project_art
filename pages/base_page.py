@@ -50,3 +50,5 @@ class BasePage:
 
     def switch_to_tab(self):
         self.driver.switch_to.window(self.driver.window_handles[1])
+
+
