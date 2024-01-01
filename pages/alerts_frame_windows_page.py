@@ -101,3 +101,15 @@ class ModalDialogsPage(BasePage):
         body_large_text = self.element_is_visible(self.locators.BODY_LARGE_MODAL).text
         self.element_is_visible(self.locators.LARGE_MODAL_CLOSE_BUTTON).click()
         return [title_small, len(body_small_text)], [title_large, len(body_large_text)]
+
+    def check_small_modal_dialogs(self):
+        self.element_is_visible(self.locators.SMALL_MODAL_BUTTON).click()
+        title_small = self.element_is_visible(self.locators.TITLE_SMALL_MODAL).text
+        self.element_is_visible(self.locators.SMALL_MODAL_CLOSE_BUTTON).click()
+        return title_small
+
+    def check_large_modal_dialogs(self):
+        self.element_is_visible(self.locators.LARGE_MODAL_BUTTON).click()
+        title_large = self.element_is_visible(self.locators.TITLE_LARGE_MODAL).text
+        self.element_is_visible(self.locators.LARGE_MODAL_CLOSE_BUTTON).click()
+        return title_large
