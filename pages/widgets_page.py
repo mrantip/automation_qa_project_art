@@ -1,6 +1,10 @@
-from selenium.common.exceptions import TimeoutException
+import random
 
-from locators.widgets_page_locators import AccordianPageLocators
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver import Keys
+
+from generator.generator import generated_color
+from locators.widgets_page_locators import AccordianPageLocators, AutoCompletePageLocators
 from pages.base_page import BasePage
 
 
@@ -26,3 +30,40 @@ class AccordianPage(BasePage):
             section_title.click()
             section_content = self.element_is_visible(accordian[accordian_num]['content']).text
         return [section_title.text, len(section_content)]
+
+
+class AutoCompletePage(BasePage):
+    locators = AutoCompletePageLocators()
+
+    def fill_input_multi(self):
+        colors = random.sample(next(generated_color()).color_name, k=random.randint(2, 5))
+        for color in colors:
+            input_multi = self.element_is_clickable(self.locators.MULTI_INPUT)
+            input_multi.send_keys(color)
+            input_multi.send_keys(Keys.ENTER)
+        return colors
+
+    def remove_value_from_multi(self):
+        count_value_before = len(self.elements_are_present(self.locators.MULTI_VALUE))
+        remove_button_list = self.elements_are_visible(self.locators.MULTI_VALUE_REMOVE)
+        for value in remove_button_list:
+            value.click()
+            break
+        count_value_after = len(self.elements_are_present(self.locators.MULTI_VALUE))
+        return count_value_before, count_value_after
+
+    def check_color_in_multi(self):
+        color_list = self.elements_are_present(self.locators.MULTI_VALUE)
+        colors = []
+        for color in color_list:
+            colors.append(color.text)
+        return colors
+
+    def remove_all_value_from_multi(self):
+        remove = self.element_is_visible(self.locators.MULTI_VALUE_REMOVE_ALL)
+        remove.click()
+        try:
+            count_value_after = len(self.elements_are_present(self.locators.MULTI_VALUE))
+        except TimeoutException:
+            count_value_after = 0
+        return count_value_after
