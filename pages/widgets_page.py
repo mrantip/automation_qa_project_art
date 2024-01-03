@@ -1,4 +1,5 @@
 import random
+import time
 
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver import Keys
@@ -136,3 +137,12 @@ class SliderPage(BasePage):
 
 class ProgressBarPage(BasePage):
     locators = ProgressBarPageLocators
+
+    def change_progress_bar_value(self):
+        value_before = self.element_is_present(self.locators.PROGRESS_BAR_VALUE).text
+        progress_bar_button = self.element_is_clickable(self.locators.PROGRESS_BAR_BUTTON)
+        progress_bar_button.click()
+        time.sleep(random.randint(2, 6))
+        progress_bar_button.click()
+        value_after = self.element_is_present(self.locators.PROGRESS_BAR_VALUE).text
+        return value_before, value_after
