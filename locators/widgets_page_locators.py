@@ -10,7 +10,7 @@ class AccordianPageLocators:
     SECTION_CONTENT_THIRD = (By.CSS_SELECTOR, 'div[id="section3Content"] p')
 
 
-class AutoCompletePageLocators():
+class AutoCompletePageLocators:
     MULTI_INPUT = (By.CSS_SELECTOR, 'input[id="autoCompleteMultipleInput"]')
     MULTI_VALUE = (By.CSS_SELECTOR, 'div[class="css-1rhbuit-multiValue auto-complete__multi-value"]')
     MULTI_VALUE_REMOVE = (By.CSS_SELECTOR, 'div[class="css-1rhbuit-multiValue auto-complete__multi-value"] svg path')
@@ -19,7 +19,7 @@ class AutoCompletePageLocators():
     SINGLE_INPUT = (By.CSS_SELECTOR, 'input[id="autoCompleteSingleInput"]')
 
 
-class DataPickerPageLocators():
+class DataPickerPageLocators:
     DATE_INPUT = (By.CSS_SELECTOR, 'input[id="datePickerMonthYearInput"]')
     DATE_SELECT_MONTH = (By.CSS_SELECTOR, 'select[class="react-datepicker__month-select"]')
     DATE_SELECT_YEAR = (By.CSS_SELECTOR, 'select[class="react-datepicker__year-select"]')
@@ -33,11 +33,22 @@ class DataPickerPageLocators():
     DATE_AND_TIME_YEAR_LIST = (By.CSS_SELECTOR, 'div[class="react-datepicker__year-option"]')
 
 
-class SliderPageLocators():
+class SliderPageLocators:
     INPUT_SLIDER = (By.CSS_SELECTOR, 'input[class="range-slider range-slider--primary"]')
     SLIDER_VALUE = (By.CSS_SELECTOR, 'input[id="sliderValue"]')
 
 
-class ProgressBarPageLocators():
+class ProgressBarPageLocators:
     PROGRESS_BAR_BUTTON = (By.CSS_SELECTOR, 'button[id="startStopButton"]')
     PROGRESS_BAR_VALUE = (By.CSS_SELECTOR, 'div[class="progress-bar bg-info"]')
+
+
+class TabsPageLocators:
+    TABS_WHAT = (By.CSS_SELECTOR, 'a[id="demo-tab-what"]')
+    TABS_WHAT_CONTENT = (By.CSS_SELECTOR, 'div[id="demo-tabpane-what"]')
+    TABS_ORIGIN = (By.CSS_SELECTOR, 'a[id="demo-tab-origin"]')
+    TABS_ORIGIN_CONTENT = (By.CSS_SELECTOR, 'div[id="demo-tabpane-origin"]')
+    TABS_USE = (By.CSS_SELECTOR, 'a[id="demo-tab-use"]')
+    TABS_USE_CONTENT = (By.CSS_SELECTOR, 'div[id="demo-tabpane-use"]')
+    TABS_MORE = (By.CSS_SELECTOR, 'a[id="demo-tab-more"]')
+    TABS_MORE_CONTENT = (By.CSS_SELECTOR, 'div[id="demo-tabpane-more"]')
