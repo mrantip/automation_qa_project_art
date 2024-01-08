@@ -1,4 +1,4 @@
-from pages.interactions_page import SortablePage, SelectablePage, ResizablePage
+from pages.interactions_page import SortablePage, SelectablePage, ResizablePage, DroppablePage
 
 
 class TestInteractions:
@@ -32,3 +32,11 @@ class TestInteractions:
             assert ('500px', '300px') == max_box, 'maximum size not equal to "500px", "300px"'
             assert ('150px', '150px') == min_box, 'minimum size not equal to "150px", "150px"'
             assert min_resize != max_resize, 'resizable has not been changed'
+
+    class TestDroppablePage:
+
+        def test_simple_droppable(self, driver):
+            droppable_page = DroppablePage(driver, 'https://demoqa.com/droppable')
+            droppable_page.open()
+            text = droppable_page.drop_simple()
+            assert text == 'Dropped!', 'The element has not been dropped'
