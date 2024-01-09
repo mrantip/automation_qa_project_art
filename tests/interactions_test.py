@@ -40,3 +40,19 @@ class TestInteractions:
             droppable_page.open()
             text = droppable_page.drop_simple()
             assert text == 'Dropped!', 'The element has not been dropped'
+
+        def test_accept_droppable(self, driver):
+            droppable_page = DroppablePage(driver, 'https://demoqa.com/droppable')
+            droppable_page.open()
+            not_accept, accept = droppable_page.drop_accept()
+            assert not_accept == 'Drop here', 'The dropped element has been accepted'
+            assert accept == 'Dropped!', 'The dropped element has not been accepted'
+
+        def test_prevent_propogation_droppable(self, driver):
+            droppable_page = DroppablePage(driver, 'https://demoqa.com/droppable')
+            droppable_page.open()
+            not_greedy, not_greedy_inner, greedy, greedy_inner = droppable_page.drop_prevent_propogation()
+            assert not_greedy == 'Dropped!', 'The text of element  has not been changed'
+            assert not_greedy_inner == 'Dropped!', 'The text of element  has not been changed'
+            assert greedy == 'Outer droppable', 'The text of element  has been changed'
+            assert greedy_inner == 'Dropped!', 'The text of element  has not been changed'
