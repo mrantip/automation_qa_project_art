@@ -1,4 +1,5 @@
 import random
+import time
 
 from locators.interactions_page_locators import SortablePageLocators, SelectablePageLocators, ResizablePageLocators, \
     DroppablePageLocators
@@ -116,3 +117,19 @@ class DroppablePage(BasePage):
         text_greedy_box = self.element_is_visible(self.locators.GREEDY_DROP_BOX_TEXT).text
         text_greedy_inner_box = greedy_inner_box.text
         return text_not_greedy_box, text_not_greedy_inner_box, text_greedy_box, text_greedy_inner_box
+
+    def drop_revert_draggable(self, type_drag):
+        drags = {
+            'will':
+                {'revert': self.locators.WILL_REVERT},
+            'not_will':
+                {'revert': self.locators.NOT_REVERT}
+        }
+        self.element_is_visible(self.locators.REVERT_TAB).click()
+        will_revert = self.element_is_visible(drags[type_drag]['revert'])
+        drop_div = self.element_is_visible(self.locators.DROP_HERE_REVERT)
+        self.action_drag_and_drop_to_element(will_revert, drop_div)
+        position_after_move = will_revert.get_attribute('style')
+        time.sleep(1)
+        position_after_revert = will_revert.get_attribute('style')
+        return position_after_move, position_after_revert

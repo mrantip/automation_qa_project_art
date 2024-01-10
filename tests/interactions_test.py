@@ -56,3 +56,11 @@ class TestInteractions:
             assert not_greedy_inner == 'Dropped!', 'The text of element  has not been changed'
             assert greedy == 'Outer droppable', 'The text of element  has been changed'
             assert greedy_inner == 'Dropped!', 'The text of element  has not been changed'
+
+        def test_revert_graggable_droppable(self, driver):
+            droppable_page = DroppablePage(driver, 'https://demoqa.com/droppable')
+            droppable_page.open()
+            will_after_move, will_after_revert = droppable_page.drop_revert_draggable('will')
+            not_will_after_move, not_will_after_revert = droppable_page.drop_revert_draggable('not_will')
+            assert will_after_move != will_after_revert, 'The element has not reverted'
+            assert not_will_after_move == not_will_after_revert, 'The element has reverted'
