@@ -62,56 +62,56 @@ class TestWidgets:
             assert value_date_before != value_date_after, 'The date and time have not been changed'
 
 
-class TestSliderPage:
-    def test_slider(self, driver):
-        slider = SliderPage(driver, 'https://demoqa.com/slider')
-        slider.open()
-        value_before, value_after = slider.change_slider_value()
-        assert value_before != value_after, 'The slider value has not been changed'
+    class TestSliderPage:
+        def test_slider(self, driver):
+            slider = SliderPage(driver, 'https://demoqa.com/slider')
+            slider.open()
+            value_before, value_after = slider.change_slider_value()
+            assert value_before != value_after, 'The slider value has not been changed'
 
 
-class TestProgressBarPage:
-    def test_progress_bar(self, driver):
-        progress_bar = ProgressBarPage(driver, 'https://demoqa.com/progress-bar')
-        progress_bar.open()
-        value_before, value_after = progress_bar.change_progress_bar_value()
-        assert value_before != value_after, 'The progress bar value has not been changed'
+    class TestProgressBarPage:
+        def test_progress_bar(self, driver):
+            progress_bar = ProgressBarPage(driver, 'https://demoqa.com/progress-bar')
+            progress_bar.open()
+            value_before, value_after = progress_bar.change_progress_bar_value()
+            assert value_before != value_after, 'The progress bar value has not been changed'
 
 
-class TestTabsPage:
-    def test_tabs(self, driver):
-        tabs = TabsPage(driver, 'https://demoqa.com/tabs')
-        tabs.open()
-        what_button, what_content = tabs.check_tabs('what')
-        origin_button, origin_content = tabs.check_tabs('origin')
-        use_button, use_content = tabs.check_tabs('use')
-        more_button, more_content = tabs.check_tabs('more')
-        assert what_button == 'What' and what_content != 0, 'The tab "what" was not pressed or the text is missing'
-        assert origin_button == 'Origin' and origin_content != 0, 'The tab "origin" was not pressed or the text is missing'
-        assert use_button == 'Use' and use_content != 0, 'The tab "use" was not pressed or the text is missing'
-        assert more_button == 'More' and more_content != 0, 'The tab "more" was not pressed or the text is missing'
+    class TestTabsPage:
+        def test_tabs(self, driver):
+            tabs = TabsPage(driver, 'https://demoqa.com/tabs')
+            tabs.open()
+            what_button, what_content = tabs.check_tabs('what')
+            origin_button, origin_content = tabs.check_tabs('origin')
+            use_button, use_content = tabs.check_tabs('use')
+            more_button, more_content = tabs.check_tabs('more')
+            assert what_button == 'What' and what_content != 0, 'The tab "what" was not pressed or the text is missing'
+            assert origin_button == 'Origin' and origin_content != 0, 'The tab "origin" was not pressed or the text is missing'
+            assert use_button == 'Use' and use_content != 0, 'The tab "use" was not pressed or the text is missing'
+            assert more_button == 'More' and more_content != 0, 'The tab "more" was not pressed or the text is missing'
 
 
-class TestToolTipsPage:
-    def test_tool_tips(self, driver):
-        tool_tips_page = ToolTipsPage(driver, 'https://demoqa.com/tool-tips')
-        tool_tips_page.open()
-        button_text, field_text, contrary_text, section_text = tool_tips_page.check_tool_tips()
-        assert button_text == 'You hovered over the Button', 'hover missing or incorrect content'
-        assert field_text == 'You hovered over the text field', 'hover missing or incorrect content'
-        assert contrary_text == 'You hovered over the Contrary', 'hover missing or incorrect content'
-        assert section_text == 'You hovered over the 1.10.32', 'hover missing or incorrect content'
+    class TestToolTipsPage:
+        def test_tool_tips(self, driver):
+            tool_tips_page = ToolTipsPage(driver, 'https://demoqa.com/tool-tips')
+            tool_tips_page.open()
+            button_text, field_text, contrary_text, section_text = tool_tips_page.check_tool_tips()
+            assert button_text == 'You hovered over the Button', 'hover missing or incorrect content'
+            assert field_text == 'You hovered over the text field', 'hover missing or incorrect content'
+            assert contrary_text == 'You hovered over the Contrary', 'hover missing or incorrect content'
+            assert section_text == 'You hovered over the 1.10.32', 'hover missing or incorrect content'
 
 
-class TestMenuPage:
-    def test_menu_items(self, driver):
-        menu_page = MenuPage(driver, 'https://demoqa.com/menu')
-        menu_page.open()
-        data = menu_page.check_menu()
-        assert data == ['Main Item 1', 'Main Item 2', 'Sub Item', 'Sub Item', 'SUB SUB LIST »', 'Sub Sub Item 1',
-                        'Sub Sub Item 2', 'Main Item 3'], 'Menu items do not exist or have not been selected'
+    class TestMenuPage:
+        def test_menu_items(self, driver):
+            menu_page = MenuPage(driver, 'https://demoqa.com/menu')
+            menu_page.open()
+            data = menu_page.check_menu()
+            assert data == ['Main Item 1', 'Main Item 2', 'Sub Item', 'Sub Item', 'SUB SUB LIST »', 'Sub Sub Item 1',
+                            'Sub Sub Item 2', 'Main Item 3'], 'Menu items do not exist or have not been selected'
 
 
-class TestSelectMenuPage:
-    pass
-#     СДЕЛАТЬ ПОЗЖЕ!!!!!!!!!!!!!!!!
+    class TestSelectMenuPage:
+        pass
+    #     СДЕЛАТЬ ПОЗЖЕ!!!!!!!!!!!!!!!!
