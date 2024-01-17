@@ -1,4 +1,5 @@
 import os
+import time
 
 import allure
 from selenium.webdriver import Keys
@@ -22,6 +23,7 @@ class FormPage(BasePage):
         self.element_is_visible(self.locators.EMAIL).send_keys(person.email)
         self.element_is_visible(self.locators.GENDER).click()
         self.element_is_visible(self.locators.MOBILE).send_keys(person.mobile)
+        self.fill_date_of_birth()
         self.element_is_visible(self.locators.SUBJECT).send_keys('Maths')
         self.element_is_visible(self.locators.SUBJECT).send_keys(Keys.RETURN)
         self.element_is_visible(self.locators.HOBBIES).click()
@@ -35,6 +37,13 @@ class FormPage(BasePage):
         self.go_to_element(self.element_is_present(self.locators.SUBMIT))
         self.element_is_present(self.locators.SUBMIT).click()
         return person
+
+    @allure.step('fill date of birth')
+    def fill_date_of_birth(self):
+        self.element_is_visible(self.locators.DATE_OF_BIRTH).click()
+        self.element_is_present(self.locators.MONTH_OF_BIRTH).click()
+        self.element_is_present(self.locators.YEAR_OF_BIRTH).click()
+        self.element_is_visible(self.locators.DAY_OF_BIRTH).click()
 
     @allure.step('get form result')
     def form_result(self):
