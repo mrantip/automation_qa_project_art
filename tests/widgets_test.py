@@ -133,8 +133,3 @@ class TestWidgets:
             data = menu_page.check_menu()
             assert data == ['Main Item 1', 'Main Item 2', 'Sub Item', 'Sub Item', 'SUB SUB LIST »', 'Sub Sub Item 1',
                             'Sub Sub Item 2', 'Main Item 3'], 'Menu items do not exist or have not been selected'
-
-    @allure.feature('Select Menu Page')
-    class TestSelectMenuPage:
-        pass
-    #     СДЕЛАТЬ ПОЗЖЕ!!!!!!!!!!!!!!!!
