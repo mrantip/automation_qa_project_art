@@ -1,7 +1,7 @@
 # Проект по тестированию UI сайта "DEMOQA"
 > <a target="_blank" href="https://demoqa.com/">DEMOQA</a>
 
-![main page screenshot](/automation_qa_project_art/picture/main_page.jpg)
+![main page screenshot](picture/main_page.jpg)
 
 ----
 
