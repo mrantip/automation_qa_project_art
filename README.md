@@ -1,5 +1,5 @@
 # Проект по тестированию UI сайта "DEMOQA"
-> <a target="_blank" href="https://demoqa.com/"</a>
+> <a target="_blank" href="https://demoqa.com/"></a>
 
 ![main page screenshot](/automation-_qa_project_art/picture/main_page.jpg)
 
