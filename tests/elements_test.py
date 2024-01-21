@@ -215,6 +215,7 @@ class TestElements:
             dynamic_properties = DynamicPropertiesPage(driver, 'https://demoqa.com/dynamic-properties')
             dynamic_properties.open()
             color_before, color_after = dynamic_properties.check_changed_of_color()
+            # assert color_after == 'rgba(220, 53, 69, 1)', 'colors have not been changed'
             assert color_before != color_after, 'colors have not been changed'
 
         @allure.title('Check the appear button')
