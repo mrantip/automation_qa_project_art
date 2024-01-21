@@ -23,12 +23,12 @@
 
 ### Allure отчет
 #### Общие результаты 
-![allure_report_overview](automation_qa_project_art/picture/allure_report_overview.png)
+![allure_report_overview](picture/allure_report_overview.png)
 
 #### Результаты прохождения теста
-![allure_reports_behaviors](automation_qa_project_art/picture/allure_reports_behaviors.png)
+![allure_reports_behaviors](/picture/allure_reports_behaviors.png)
 
 #### Графики
 
-![allure_reports_graphs](automation_qa_project_art/picture/alluere_reports_graphs_1.png)
+![allure_reports_graphs](picture/alluere_reports_graphs_1.png)
 
